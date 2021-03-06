@@ -1,0 +1,56 @@
+databaseChangeLog:
+  - property:
+      name: NOME_TABELA
+      value: VACCINE_SCHEDULE
+      global: false
+
+  - changeSet:
+      comment: Adding table ${NOME_TABELA}
+      id: 210303_1859_01
+      author: Francisco Allan Flávio Vidal Costa
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: HALT
+        - not:
+            - tableExists:
+                tableName: ${NOME_TABELA}
+      changes:
+        - createTable:
+            tableName: ${NOME_TABELA}
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                    primaryKey: true
+                    primaryKeyName: CNT_${NOME_TABELA}_PK
+                  name: ID
+                  type: INTEGER
+              - column:
+                  name: VACCINATION_SITE_ID
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+                    references: VACCINATION_SITE
+                    referencedTableName: VACCINATION_SITE
+                    referencedColumnNames: ID
+                    foreignKeyName: CT_${NOME_TABELA}_VSCSIT_FK
+              - column:
+                  name: PATIENT_ID
+                  type: VARCHAR2(11)
+                  constraints:
+                    nullable: true
+                    references: PATIENT
+                    referencedTableName: PATIENT
+                    referencedColumnNames: CPF
+                    foreignKeyName: CT_${NOME_TABELA}_PTT_FK
+              - column:
+                  constraints:
+                    nullable: false
+                  name: DAY
+                  type: TIMESTAMP
+              - column:
+                  constraints:
+                    nullable: false
+                  name: REALIZED
+                  type: BOOLEAN

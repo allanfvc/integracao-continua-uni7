@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - property:
+      name: NOME_TABELA
+      value: PATIENT
+      global: false
+
+  - changeSet:
+      comment: Adding table ${NOME_TABELA}
+      id: 210303_1450_01
+      author: Francisco Allan Flávio Vidal Costa
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: HALT
+        - not:
+            - tableExists:
+                tableName: ${NOME_TABELA}
+      changes:
+        - createTable:
+            tableName: ${NOME_TABELA}
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                    primaryKey: true
+                    primaryKeyName: CNT_PATIENT_PK
+                  name: CPF
+                  type: VARCHAR2(11)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: NAME
+                  type: VARCHAR2(500)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: BIRTHDAY
+                  type: DATE
+              - column:
+                  name: PATIENT_ADDRESS
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+                    references: ADDRESS
+                    referencedTableName: ADDRESS
+                    referencedColumnNames: ID
+                    foreignKeyName: CT_PATIENT_ADDRESS_FK

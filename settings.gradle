@@ -1,0 +1,6 @@
+rootProject.name='integracao-continua'
+
+include 'integracao-continua-core',
+        'integracao-continua-dataprovider',
+        'integracao-continua-entrypoint',
+        'integracao-continua-configuration'

@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - property:
+      name: NOME_TABELA
+      value: VACCINATION_SITE
+      global: false
+
+  - changeSet:
+      comment: Adding table ${NOME_TABELA}
+      id: 210303_1803_01
+      author: Francisco Allan Flávio Vidal Costa
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: HALT
+        - not:
+            - tableExists:
+                tableName: ${NOME_TABELA}
+      changes:
+        - createTable:
+            tableName: ${NOME_TABELA}
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                    primaryKey: true
+                    primaryKeyName: CNT_${NOME_TABELA}_PK
+                  name: ID
+                  type: INTEGER
+              - column:
+                  constraints:
+                    nullable: false
+                  name: NAME
+                  type: VARCHAR2(500)
+              - column:
+                  name: ${NOME_TABELA}_ADDRESS
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+                    references: ADDRESS
+                    referencedTableName: ADDRESS
+                    referencedColumnNames: ID
+                    foreignKeyName: CT_${NOME_TABELA}_ADDRESS_FK

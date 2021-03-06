@@ -1,0 +1,63 @@
+databaseChangeLog:
+  - property:
+      name: NOME_TABELA
+      value: ADDRESS
+      global: false
+
+  - changeSet:
+      comment: Adding table ${NOME_TABELA}
+      id: 210303_1440_01
+      author: Francisco Allan Flávio Vidal Costa
+      preConditions:
+        - onFail: MARK_RAN
+        - onError: HALT
+        - not:
+            - tableExists:
+                tableName: ${NOME_TABELA}
+      changes:
+        - createTable:
+            tableName: ${NOME_TABELA}
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                    primaryKey: true
+                    primaryKeyName: CNT_ADDRESS_PK
+                  name: ID
+                  type: INTEGER
+              - column:
+                  constraints:
+                    nullable: false
+                  name: NAME
+                  type: VARCHAR2(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: DISTRICT
+                  type: VARCHAR2(140)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CITY
+                  type: VARCHAR2(140)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: UF
+                  type: VARCHAR2(2)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ZIP_CODE
+                  type: VARCHAR2(9)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: LATITUDE
+                  type: DOUBLE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: LONGITUDE
+                  type: DOUBLE

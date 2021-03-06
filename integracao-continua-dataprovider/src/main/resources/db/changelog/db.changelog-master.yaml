@@ -1,0 +1,5 @@
+databaseChangeLog:
+#  - include:
+#      file: classpath:db/changelog/properties.yaml
+  - includeAll:
+      path: classpath:db/changelog/1.0.0

@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+  database:
+    image: postgres
+    environment:
+      POSTGRES_USER: spring
+      POSTGRES_PASSWORD: spring
+      POSTGRES_DB: integracao-continua
+    ports:
+      - 5432:5432
