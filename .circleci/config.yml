@@ -36,6 +36,9 @@ jobs:
 
       # run tests!
       - run: gradle test
+      - store_test_results:
+          path: integracao-continua-core/build/test-results
+
 
       # run build!
       - run: gradle build
