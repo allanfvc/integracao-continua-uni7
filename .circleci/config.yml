@@ -2,7 +2,6 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
       - image: circleci/openjdk:11-jdk
 
       # Specify service dependencies here if necessary
@@ -13,32 +12,71 @@ jobs:
     working_directory: ~/repo
 
     environment:
-      # Customize the JVM maximum heap limit
       JVM_OPTS: -Xmx3200m
       TERM: dumb
 
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}
-            # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: gradle dependencies
-
+      - run: gradle build
       - save_cache:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
-      # run tests!
-      - run: gradle test
+  tests:core:
+    docker:
+      - image: circleci/openjdk:11-jdk
+    working_directory: ~/repo
+    environment:
+      JVM_OPTS: -Xmx512m
+      TERM: dumb
+    steps:
+      - checkout
+      - restore_cache:
+      - run: gradle integracao-continua-core:test
       - store_test_results:
           path: integracao-continua-core/build/test-results
-
-
-      # run build!
-      - run: gradle build
+  tests:providers:
+    docker:
+      - image: circleci/openjdk:11-jdk
+    working_directory: ~/repo
+    environment:
+      JVM_OPTS: -Xmx512m
+      TERM: dumb
+    steps:
+      - checkout
+      - restore_cache:
+      - run: gradle integracao-continua-dataprovider:test
+      - store_test_results:
+          path: integracao-continua-dataprovider/build/test-results
+  tests:entrypoints:
+    docker:
+      - image: circleci/openjdk:11-jdk
+    working_directory: ~/repo
+    environment:
+      JVM_OPTS: -Xmx512m
+      TERM: dumb
+    steps:
+      - checkout
+      - restore_cache:
+      - run: gradle integracao-continua-entrypoint:test
+      - store_test_results:
+          path: integracao-continua-entrypoint/build/test-results
+  tests:configuration:
+    docker:
+      - image: circleci/openjdk:11-jdk
+    working_directory: ~/repo
+    environment:
+      JVM_OPTS: -Xmx512m
+      TERM: dumb
+    steps:
+      - checkout
+      - restore_cache:
+      - run: gradle integracao-continua-configuration:test
+      - store_test_results:
+          path: integracao-continua-configuration/build/test-results
