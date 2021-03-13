@@ -36,6 +36,10 @@ jobs:
       JVM_OPTS: -Xmx512m
       TERM: dumb
     steps:
+      - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "build.gradle" }}
+          - v1-dependencies-
       - run: gradle integracao-continua-core:test
       - store_test_results:
           path: integracao-continua-core/build/test-results
@@ -47,6 +51,10 @@ jobs:
       JVM_OPTS: -Xmx512m
       TERM: dumb
     steps:
+      - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "build.gradle" }}
+          - v1-dependencies-
       - run: gradle integracao-continua-dataprovider:test
       - store_test_results:
           path: integracao-continua-dataprovider/build/test-results
@@ -58,6 +66,10 @@ jobs:
       JVM_OPTS: -Xmx512m
       TERM: dumb
     steps:
+      - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "build.gradle" }}
+          - v1-dependencies-
       - run: gradle integracao-continua-entrypoint:test
       - store_test_results:
           path: integracao-continua-entrypoint/build/test-results
@@ -69,8 +81,10 @@ jobs:
       JVM_OPTS: -Xmx512m
       TERM: dumb
     steps:
-      - checkout
       - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "build.gradle" }}
+          - v1-dependencies-
       - run: gradle integracao-continua-configuration:test
       - store_test_results:
           path: integracao-continua-configuration/build/test-results
