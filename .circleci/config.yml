@@ -36,8 +36,6 @@ jobs:
       JVM_OPTS: -Xmx512m
       TERM: dumb
     steps:
-      - checkout
-      - restore_cache:
       - run: gradle integracao-continua-core:test
       - store_test_results:
           path: integracao-continua-core/build/test-results
@@ -49,8 +47,6 @@ jobs:
       JVM_OPTS: -Xmx512m
       TERM: dumb
     steps:
-      - checkout
-      - restore_cache:
       - run: gradle integracao-continua-dataprovider:test
       - store_test_results:
           path: integracao-continua-dataprovider/build/test-results
@@ -62,8 +58,6 @@ jobs:
       JVM_OPTS: -Xmx512m
       TERM: dumb
     steps:
-      - checkout
-      - restore_cache:
       - run: gradle integracao-continua-entrypoint:test
       - store_test_results:
           path: integracao-continua-entrypoint/build/test-results
@@ -82,17 +76,18 @@ jobs:
           path: integracao-continua-configuration/build/test-results
 workflows:
   version: 2
-  jobs:
-    - build
-    - tests:core:
-        requires:
-          - build
-    - tests:providers:
-        requires:
-          - build
-    - tests:entrypoints:
-        requires:
-          - build
-    - tests:configuration:
-        requires:
-          - build
+  build_and_test:
+    jobs:
+      - build
+      - tests:core:
+          requires:
+            - build
+      - tests:providers:
+          requires:
+            - build
+      - tests:entrypoints:
+          requires:
+            - build
+      - tests:configuration:
+          requires:
+            - build
