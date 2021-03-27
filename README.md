@@ -1,6 +1,6 @@
-# Learn Continuous Integration
+# UNI7 - Integração continua
 
-![Spring Version][spring] ![Java Version][java] ![Kotlin Version][kotlin]
+![Spring Boot Version][spring] ![Java Version][java] ![Kotlin Version][kotlin]
 
 📜 Repositório dedicado a aprendizagem de  kotlin, e arquitetura limpa e integração continua.
 
