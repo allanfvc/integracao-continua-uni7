@@ -1,0 +1,18 @@
+@domain/core:
+  - integracao-continua-core/src/*
+@domain/dataprovider:
+  - integracao-continua-dataprovider/src/*
+@domain/entrypoint:
+  - integracao-continua-entrypoint/src/*
+@domain/configuration:
+  - integracao-continua-configuration/src/*
+
+@domain/test:
+  - integracao-continua-core/test/*
+  - integracao-continua-dataprovider/test/*
+  - integracao-continua-entrypoint/test/*
+  - integracao-continua-configuration/test/*
+
+@ci:
+  - .github
+  - .circleci
