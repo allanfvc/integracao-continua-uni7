@@ -1,0 +1,14 @@
+name: Greet on pull request
+
+on: pull_request
+
+jobs:
+  comentario:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Comentario na PR
+        uses: thollander/actions-comment-pull-request@master
+        with:
+          message: 'Thank you for the pull request. We will review this soon.'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
