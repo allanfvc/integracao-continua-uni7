@@ -1,6 +1,6 @@
-# Learn Quarkus
+# Learn Continuous Integration
 
-![Quarkus Version][quarkus] ![Java Version][java] ![Kotlin Version][kotlin]
+![Spring Version][spring] ![Java Version][java] ![Kotlin Version][kotlin]
 
 📜 Repositório dedicado a aprendizagem de  kotlin, e arquitetura limpa e integração continua.
 
@@ -27,6 +27,6 @@ Source and credit: Mattia Battiston, under CC BY 4.0, https://github.com/mattia-
 4. _Push_ (`git push origin feature/fooBar`)
 5. Crie um novo _Pull Request_
 
-[quarkus]: https://img.shields.io/badge/Spring-2.4.3-green?style=for-the-badge&logo=spring
+[spring]: https://img.shields.io/badge/Spring-2.4.3-green?style=for-the-badge&logo=spring
 [java]: https://img.shields.io/badge/Java-11.0.10-red?style=for-the-badge&logo=java
 [kotlin]: https://img.shields.io/badge/Kotlin-1.4.30-blue?style=for-the-badge&logo=kotlin
