@@ -1,5 +1,7 @@
 # UNI7 - Integração continua
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/43d26565c8004213a3277f64d06f5435)](https://app.codacy.com/gh/allanfvc/integracao-continua-uni7?utm_source=github.com&utm_medium=referral&utm_content=allanfvc/integracao-continua-uni7&utm_campaign=Badge_Grade_Settings)
+
 ![Spring Boot Version][spring] ![Java Version][java] ![Kotlin Version][kotlin]
 
 📜 Repositório dedicado a aprendizagem de  kotlin, e arquitetura limpa e integração continua.
