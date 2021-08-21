@@ -1,0 +1,11 @@
+name: Testing action
+
+on: [pull_request]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: allanfvc/cisc@latest
+      with:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
