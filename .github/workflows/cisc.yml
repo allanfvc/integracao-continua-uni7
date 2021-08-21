@@ -3,9 +3,9 @@ name: Testing action
 on: [pull_request]
 
 jobs:
-  greeting:
+  ci-smell-checker:
     runs-on: ubuntu-latest
     steps:
-    - uses: allanfvc/cisc@v0.0.1
+    - uses: allanfvc/cisc@v0.0.2
       with:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
