@@ -22,3 +22,7 @@ jobs:
       - name: Smell Checker
         id: hello
         uses: allanfvc/cisc-action@v0.1.0
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_REPOSITORY: "${{ secrets.GITHUB_REPOSITORY }}"
+          GITHUB_API_URL: "${{ secrets.GITHUB_API_URL }}"
